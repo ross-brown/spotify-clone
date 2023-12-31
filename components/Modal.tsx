@@ -19,7 +19,7 @@ function Modal({ isOpen, onChange, title, description, children }: ModalProps) {
       <Dialog.Portal>
         <Dialog.Overlay
           className="
-            bg-neutral-900/90
+            bg-neutral-900/60
             backdrop-blur-sm
             fixed
             inset-0
