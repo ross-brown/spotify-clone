@@ -9,6 +9,8 @@ interface SearchProps {
   };
 }
 
+export const revalidate = 0;
+
 
 async function Search({ searchParams }: SearchProps) {
   const songs = await getSongsByTitle(searchParams.title);
@@ -32,7 +34,7 @@ async function Search({ searchParams }: SearchProps) {
         </div>
         <SearchInput />
       </Header>
-      <SearchContent  songs={songs} />
+      <SearchContent songs={songs} />
     </div>
   );
 }
