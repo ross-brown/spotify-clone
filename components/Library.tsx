@@ -5,8 +5,15 @@ import { AiOutlinePlus } from "react-icons/ai";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import useUploadModal from "@/hooks/useUploadModal";
+import { Song } from "@/types";
+import MediaItem from "./MediaItem";
 
-export default function Library() {
+
+interface LibraryProps {
+  songs: Song[];
+}
+
+export default function Library({ songs }: LibraryProps) {
   const authModal = useAuthModal();
   const uploadModal = useUploadModal();
   const { user } = useUser();
@@ -68,7 +75,12 @@ export default function Library() {
         mt-4
         px-3
       ">
-        List of Songs!
+        {songs.map(song => (
+          <MediaItem
+            onClick={() => {}}
+            key={song.id}
+            data={song}/>
+        ))}
       </div>
     </div>
   );
