@@ -5,10 +5,13 @@ import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 
+import { Song } from "@/types";
+import usePlayer from "@/hooks/usePlayer";
+
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
 import Library from "./Library";
-import { Song } from "@/types";
+import { twMerge } from "tailwind-merge";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -17,6 +20,7 @@ interface SidebarProps {
 
 export default function Sidebar({ children, songs }: SidebarProps) {
   const pathname = usePathname();
+  const player = usePlayer();
 
   const routes = useMemo(() => [
     {
@@ -35,7 +39,10 @@ export default function Sidebar({ children, songs }: SidebarProps) {
 
 
   return (
-    <div className="flex h-full">
+    <div className={twMerge(`
+      flex
+      h-full
+    `, player.activeId && "h-[calc(100%-80px)]")}>
       <div
         className="
         hidden
